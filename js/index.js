@@ -68,7 +68,25 @@ document.addEventListener('dragleave', (e) => {
 let btns = [...document.querySelectorAll('.btn')];
 btns.forEach(btn => {
   btn.addEventListener('dblclick', (e) => {
+    e.stopPropagation();
     e.target.style.position = 'relative';
     e.target.style.top = '40px';
   })
 })
+
+//
+let home = document.querySelector('.home');
+home.addEventListener('click', (e) => {
+  home.style.background = 'purple';
+  setTimeout(() => {
+    home.style.background = '';
+  }, 500);
+})
+
+btns.forEach(btn => btn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  e.target.style.display = 'none';
+  setTimeout(() => {
+    e.target.style.display = '';
+  }, 1000);  
+}));
